@@ -22,7 +22,7 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
   // find user based on email
-  const {email, password} = req.body
+  const { email, password } = req.body;
   // search the database for matching email
   User.findOne({email}, (err, user) => {
     if(err || !user) {
