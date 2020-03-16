@@ -7,7 +7,8 @@ const expressValidator = require('express-validator');
 require('dotenv').config()
 
 // import routes
-const userRoutes = require('./routes/authourisation')
+const authourisationRoutes = require('./routes/authourisation')
+const userRoutes = require('./routes/user')
 
 
 // app
@@ -21,6 +22,7 @@ app.use(expressValidator());
 
 // routes middleware
 app.use("/api", userRoutes);
+app.use("/api", authourisationRoutes)
 
 //db
 mongoose.connect(
