@@ -7,9 +7,6 @@
     "start": "nodemon app.js",
     "test": "jest --watchAll"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -27,6 +24,7 @@
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.4",
     "morgan": "^1.9.1",
+    "node-mocks-http": "^1.8.1",
     "nodemon": "^2.0.2",
     "uuid": "^7.0.2",
     "uuidv1": "^1.6.14"
