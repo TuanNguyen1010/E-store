@@ -1,20 +1,20 @@
-const Authourisation = require('../../controllers/authourisation')
+const AuthourisationController = require('../../controllers/authourisation')
 
-describe('Authourisation.signup', () => {
+describe('AuthourisationController.signup', () => {
   it('should have a signup function', () => {
-    expect(typeof Authourisation.signup).toBe("function")
+    expect(typeof AuthourisationController.signup).toBe("function")
   })
 
 })
 
-describe('Authourisation.signin', () => {
+describe('AuthourisationController.signin', () => {
   it('should have a signin function', () => {
-    expect(typeof Authourisation.signout).toBe("function")
+    expect(typeof AuthourisationController.signout).toBe("function")
   })
 })
 
-describe('Authourisation.signout', () => {
+describe('AuthourisationController.signout', () => {
   it('should have a signout function', () => {
-    expect(typeof Authourisation.signout).toBe("function")
+    expect(typeof AuthourisationController.signout).toBe("function")
   })
 })
