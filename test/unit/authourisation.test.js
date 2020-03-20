@@ -20,6 +20,10 @@ describe('AuthourisationController.signup', () => {
     await AuthourisationController.signup(req, res);
     expect(UserModel.create).toBeCalled();
   })
+  it('should return a status code of 201', async () => {
+    await AuthourisationController.signup(req, res);
+    expect(res.statusCode).toBe(201);
+  })
 })
 
 describe('AuthourisationController.signin', () => {
