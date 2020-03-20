@@ -4,20 +4,20 @@ const httpMocks = require('node-mocks-http')
 const signUpData = require('../mock-data/signUpData')
 
 
-UserModel.save = jest.fn();
+UserModel.create = jest.fn();
 
 describe('AuthourisationController.signup', () => {
   it('should have a signup function', () => {
     expect(typeof AuthourisationController.signup).toBe("function")
   })
-  it('should call User.create on models', () => {
+  it('should call User.create on models', async () => {
     let req, res;
     req = httpMocks.createRequest();
     res = httpMocks.createResponse();
     next = null;
     req.body = signUpData;
-    AuthourisationController.signup(req, res);
-    expect(UserModel.save).toBeCalledWith(signUpData);
+    await AuthourisationController.signup(req, res);
+    expect(UserModel.create).toBeCalled();
   })
 })
 

@@ -3,10 +3,10 @@ const jwt = require('jsonwebtoken')
 const expressJwt = require('express-jwt')
 const {errorHandler} = require("../helpers/dbErrorHandler")
 
-exports.signup = (req, res) => {
+exports.signup = async (req, res) => {
   // console.log("req.body", req.body)
-  const user = new User(req.body)
-  user.save((err, user) => {
+  // const user = await new User(req.body)
+  User.create(req.body, (err, user) => {
     if(err) {
       return res.status(400).json({
         err: errorHandler(err)
