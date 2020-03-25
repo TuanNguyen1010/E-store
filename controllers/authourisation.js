@@ -6,7 +6,7 @@ const {errorHandler} = require("../helpers/dbErrorHandler")
 exports.signup = async (req, res) => {
   // console.log("req.body", req.body)
   // const user = await new User(req.body)
-  const signup = User.create(req.body, (err, user) => {
+  User.create(req.body, (err, user) => {
     if(err) {
       return res.status(400).json({
         err: errorHandler(err)

@@ -9,6 +9,7 @@ UserModel.create = jest.fn();
 beforeEach(() => {
   req = httpMocks.createRequest();
   res = httpMocks.createResponse();
+  next = jest.fn()
 })
 
 describe('AuthourisationController.signup', () => {
@@ -23,6 +24,12 @@ describe('AuthourisationController.signup', () => {
   it('should return a status code of 201', async () => {
     await AuthourisationController.signup(req, res);
     expect(res.statusCode).toBe(201);
+  })
+  it('should be able to handle error message', async () => {
+    const errorMessage = { message: "Done property missing" };
+    const rejectPromise = Promise.reject(errorMessage)
+    UserModel.create.mockReturnValue(rejectPromise)
+    await AuthourisationController.signup(req, res);
   })
 })
 
