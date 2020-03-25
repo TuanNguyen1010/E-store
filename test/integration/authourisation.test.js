@@ -36,5 +36,18 @@ describe(endpointUrl, () => {
   expect(response.body).toStrictEqual({
     "error": "email must contain @"
     })
-})
+  })
+  it('should return error 400 when no password input' + endpointUrl,
+  async () => {
+   const response = await request(app)
+   .post(endpointUrl)
+   .send({
+    "email": "Danny1@gmail.com",
+    "password": "1234567"
+  });
+   expect(response.statusCode).toBe(400)
+   expect(response.body).toStrictEqual({
+     "error": "Name is required"
+     })
+ })
 })
