@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router()
 
 const {userById} = require('../controllers/user')
-const {requireSignin, isAuth} = require('../controllers/authourisation')
+const {requireSignin, isAuth, isAdmin} = require('../controllers/authourisation')
 
 router.get("/shopper/:userId", requireSignin, isAuth, (req, res) => {
   res.json({ 
