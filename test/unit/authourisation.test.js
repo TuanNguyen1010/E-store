@@ -9,7 +9,6 @@ UserModel.create = jest.fn();
 beforeEach(() => {
   req = httpMocks.createRequest();
   res = httpMocks.createResponse();
-  next = jest.fn()
 })
 
 describe('AuthourisationController.signup', () => {
@@ -30,6 +29,7 @@ describe('AuthourisationController.signup', () => {
     const rejectPromise = Promise.reject(errorMessage)
     UserModel.create.mockReturnValue(rejectPromise)
     await AuthourisationController.signup(req, res);
+    // expect(res.statusCode).toBe(400)
   })
 })
 

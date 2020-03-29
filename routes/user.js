@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router()
 
 const {userById} = require('../controllers/user')
-const {requireSignin} = require('../controllers/authourisation')
+const {requireSignin, isAuth} = require('../controllers/authourisation')
 
-router.get("/shopper/:userId", requireSignin, (req, res) => {
+router.get("/shopper/:userId", requireSignin, isAuth, (req, res) => {
   res.json({ 
     user: req.profile, 
     message: "welcome to the shopper's account"})

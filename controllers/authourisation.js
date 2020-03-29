@@ -14,7 +14,7 @@ exports.signup = async (req, res) => {
     }
     user.salt = undefined
     user.hashed_password = undefined
-    res.json({
+    return res.status.json({
       user
     })
   })
@@ -51,5 +51,14 @@ exports.signout = (req, res) => {
 exports.requireSignin = expressJwt({
   secret: "agdsagdsag",
   userProperty: 'auth'
-
 })
+
+exports.isAuth = (req, res, next) => {
+  let user = req.profile && req.auth && req.profile._id == req.auth._id;
+  if (!user) {
+    return res.status(403).json({
+      error: 'Acess is denied'
+    })
+  }
+  next()
+}
