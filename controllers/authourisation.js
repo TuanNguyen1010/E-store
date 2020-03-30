@@ -4,21 +4,27 @@ const expressJwt = require('express-jwt')
 const {errorHandler} = require("../helpers/dbErrorHandler")
 
 exports.signup = async (req, res) => {
-  // console.log("req.body", req.body)
-  // const user = await new User(req.body)
-  User.create(req.body, (err, user) => {
-    if(err) {
-      return res.status(400).json({
+  try {
+    const user = await User.create(req.body)
+    res.status(201).json({user})
+    } catch (err) {
+      res.status(400).json({
         err: errorHandler(err)
-      });
+      })
     }
-    user.salt = undefined
-    user.hashed_password = undefined
-    return res.status.json({
-      user
-    })
-  })
-  res.status(201)
+  // User.create(req.body, (err, user) => {
+  //   if(err) {
+  //     return res.status(400).json({
+  //       err: errorHandler(err)
+  //     });
+  //   }
+  //   user.salt = undefined
+  //   user.hashed_password = undefined
+  //   return res.status.json({
+  //     user
+  //   })
+  // })
+  // res.status(201)
 }
 
 exports.signin = (req, res) => {

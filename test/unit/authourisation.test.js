@@ -12,11 +12,14 @@ beforeEach(() => {
 })
 
 describe('AuthourisationController.signup', () => {
+  beforeEach(() => {
+    req.body = signUpData;
+  })
+
   it('should have a signup function', () => {
     expect(typeof AuthourisationController.signup).toBe("function")
   })
   it('should call User.create on models', async () => {
-    req.body = signUpData;
     await AuthourisationController.signup(req, res);
     expect(UserModel.create).toBeCalled();
   })
@@ -29,7 +32,7 @@ describe('AuthourisationController.signup', () => {
     const rejectPromise = Promise.reject(errorMessage)
     UserModel.create.mockReturnValue(rejectPromise)
     await AuthourisationController.signup(req, res);
-    // expect(res.statusCode).toBe(400)
+    expect(res.statusCode).toBe(400)
   })
 })
 
